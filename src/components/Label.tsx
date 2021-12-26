@@ -26,6 +26,10 @@ export interface Props {
    */
   fontColor?: string;
 
+  /**
+   * Custom color for the inner text
+   */
+   backgroundColor?: string;
 }
 
 /* Basic component with inner text */
@@ -34,12 +38,14 @@ const Label = ({
   color='primary',
   label="No Label",
   size="normal",
-  fontColor
+  fontColor,
+  backgroundColor="transparent"
 }: Props) => {
   return (
     <span 
       style={{
-        color: fontColor
+        color: fontColor,
+        backgroundColor
       }}
       className={`label ${size} text-${color}`} 
     >
