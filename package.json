@@ -1,18 +1,41 @@
 {
-  "name": "storybooking",
-  "version": "0.0.0",
+  "name": "bz-storybooking",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "https://github.com/BZaragoza/storybook-components",
+    "type": "git"
+  },
+  "release": {
+    "branches": "main"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build": "build-storybook",
+    "build": "yarn clean && tsc && yarn copy-files",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=652cb6480977"
+    "chromatic": "npx chromatic --project-token=652cb6480977",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "typescript": ">=4.5"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "postcss-loader": "^6.2.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -28,7 +51,16 @@
     "chromatic": "^6.3.3",
     "css-loader": "^6.5.1",
     "postcss": "^8.4.5",
+    "semantic-release": "^18.0.1",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
-  }
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ]
 }

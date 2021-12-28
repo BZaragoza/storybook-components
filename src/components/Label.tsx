@@ -33,7 +33,7 @@ export interface Props {
 }
 
 /* Basic component with inner text */
-const Label = ({
+export const Label = ({
   allCaps=false,
   color='primary',
   label="No Label",
